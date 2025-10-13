@@ -69,7 +69,7 @@ export default defineType({
       options: {
         list: [
           { title: 'Web', value: 'web' },
-          { title: 'Producing', value: 'producing' },
+          { title: 'Production', value: 'production' },
           { title: 'Photo', value: 'photo' },
         ],
         layout: 'radio', // neat radio buttons instead of dropdown
