@@ -1,10 +1,10 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'project', // This must match what your config expects
+  name: 'project',
   title: 'Projects',
   type: 'document',
-  liveEdit: true, // ✅ Enable live editing
+  liveEdit: true,
   fields: [
     defineField({
       name: 'name',
@@ -14,6 +14,7 @@ export default defineType({
     defineField({
       name: 'image',
       type: 'image',
+      title: 'Main Image',
     }),
     defineField({
       name: 'description',
@@ -58,6 +59,44 @@ export default defineType({
       name: 'order',
       type: 'number',
       validation: (Rule) => Rule.required(),
+    }),
+
+    // 🟢 New field: Project Type
+    defineField({
+      name: 'projectType',
+      title: 'Project Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Web', value: 'web' },
+          { title: 'Producing', value: 'producing' },
+          { title: 'Photo', value: 'photo' },
+        ],
+        layout: 'radio', // neat radio buttons instead of dropdown
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
+    // 🟢 New field: Image Gallery
+    defineField({
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+              options: { isHighlighted: true },
+            },
+          ],
+        },
+      ],
+      options: { layout: 'grid' },
     }),
   ],
 });
