@@ -13,10 +13,28 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
 
+   
     defineField({
       name: 'image',
       type: 'image',
-      title: 'Main Image'
+      title: 'Main Image',
+      options: { hotspot: true }
+    }),
+
+    // 🔽 NEW: main video fields (upload + URL)
+    defineField({
+      name: 'mainVideoFile',
+      title: 'Main Video (upload)',
+      type: 'file',
+      options: { accept: 'video/*' },
+      description: 'Optional. If set, this will be used as the main showcase asset instead of the image.'
+    }),
+
+    defineField({
+      name: 'mainVideoUrl',
+      title: 'Main Video URL (YouTube/Vimeo)',
+      type: 'url',
+      description: 'Optional. Used as main showcase asset (takes priority over upload and image).'
     }),
 
     defineField({
