@@ -128,8 +128,8 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Web', value: 'web' },
           { title: 'Production', value: 'production' },
+          { title: 'Web', value: 'web' },
           { title: 'Photo', value: 'photo' }
         ],
         layout: 'radio'
